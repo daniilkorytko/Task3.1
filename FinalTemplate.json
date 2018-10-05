@@ -17,6 +17,22 @@
                 "contentVersion":"1.0.0.0"
              }
            }
-        }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "Incremental",
+              "templateLink": {
+                 "uri":"https://raw.githubusercontent.com/daniilkorytko/Task3.1/master/Storage.json",
+                 "contentVersion":"1.0.0.0"
+              },
+              "parametersLink": {
+                 "uri":"https://raw.githubusercontent.com/daniilkorytko/Task3.1/master/StorageParametrs.json",
+                 "contentVersion":"1.0.0.0"
+              }
+            }
+         }
     ]
 }
