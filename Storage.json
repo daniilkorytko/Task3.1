@@ -39,11 +39,5 @@
       "kind": "Storage",
       "properties": {}
     }
-  ],
-  "outputs": {
-    "storageAccountName": {
-      "type": "string",
-      "value": "[parameters('storageAccountName')]"
-    }
-  }
+  ]
 }
