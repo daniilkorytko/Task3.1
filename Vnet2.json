@@ -8,44 +8,61 @@
         "location": {
             "type": "string"
         },
-        "addressPrefix": {
-            "type": "string"
-        },
         "subnetFrontEnd": {
             "type": "string"
         },
-        "subnetFrontEndAddressPrefix": {
+        "networkInterfaceName": {
+            "type": "string"
+        },
+        "publicIpAddressName": {
+            "type": "string"
+        },
+        "nsgId": {
+            "type": "string"
+        },
+        "vnetId": {
             "type": "string"
         }
     },
+    "variables": {
+
+        "subnetRef": "[concat(parameters('vnetId'), '/subnets/', parameters('subnetFrontEnd'))]"
+      
+       
+    },
     "resources": [
         {
-            "name": "[parameters('VnetName')]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-08-01",
+            "name": "[parameters('networkInterfaceName')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2018-04-01",
             "location": "[parameters('location')]",
+
             "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[parameters('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
+                "ipConfigurations": [
                     {
-                        "name": "[parameters('subnetFrontEnd')]",
+                        "name": "ipconfig1",
                         "properties": {
-                            "addressPrefix": "[parameters('subnetFrontEndAddressPrefix')]"
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIpAddress": {
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                            }
                         }
                     }
-                ]
+                ],
+                "networkSecurityGroup": {
+                    "id": "[parameters('nsgId')]"
+                }
             },
             "tags": {}
         }
     ],
     "outputs": {
-  "vnetId": {
-    "type": "string",
-    "value": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('VnetName'))]"
-  }
-}
+        "NetIntId": {
+          "type": "string",
+          "value": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+      }
+    }
 }
