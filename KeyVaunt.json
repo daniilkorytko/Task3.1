@@ -41,17 +41,12 @@
             "type": "bool"
         },
         "networkAcls": {
-            "type": "object",
-            "metadata": {
-                "description": "The network firewall defined for this vault."
-            }
-        }
+            "type": "object"
+
+        },
         "secretsObject": {
             "type": "secureObject",
-            "defaultValue": "{}",
-            "metadata": {
-              "description": "all secrets {\"secretName\":\"\",\"secretValue\":\"\"} wrapped in a secure object"
-            }
+            "defaultValue": "{}"
         }
     },
     "resources": [
@@ -92,7 +87,7 @@
     "outputs": {
         "KeyVaunts": {
           "type": "string",
-          "value": "[resourceId( resourceGroup().name, 'Microsoft.KeyVault/vaults', parameters('KeyVautsName'))]"
+          "value": "[resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults', parameters('KeyVautsName'))]"
       }
     }
 }
