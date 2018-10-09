@@ -28,11 +28,5 @@
             },
             "tags": {}
         }
-    ],
-    "outputs": {
-        "DataDisk": {
-          "type": "string",
-          "value": "[resourceId(resourceGroup().name, 'Microsoft.Compute/disks', length(parameters('dataDiskResources')))]"
-      }
-    }
+    ]
 }
