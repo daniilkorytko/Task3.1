@@ -31,12 +31,18 @@
         },
         "secretsObject": {
             "type": "secureObject"
-        }
-    },
-    "variables": {
+        },
+        "adminPassword": {
+            "reference":  {
+               "keyVault":  {
+                 "id":  "/subscriptions/5c2e7fc5-f38e-4743-b71d-26cff5b1b4fa/resourceGroups/Task4.1/providers/Microsoft.KeyVault/vaults/MyKeyVauntsTask4"
+                 },
+               "secretName": "Secret1Task4"
+            }
+          }
 
-
     },
+
     "resources": [
         {
             "name": "[parameters('virtualMachineName')]",
@@ -85,21 +91,13 @@
                         }
                     ]
                 },
-                "adminPassword1": {
-                    "reference":  {
-                       "keyVault":  {
-                         "id":  "/subscriptions/5c2e7fc5-f38e-4743-b71d-26cff5b1b4fa/resourceGroups/Task4.1/providers/Microsoft.KeyVault/vaults/MyKeyVauntsTask4"
-                         },
-                       "secretName": "Secret1Task4"
-                    }
-                  },
 
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     
                     
-                    "adminPassword": "adminPassword1",
+                    "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
                         "enableAutomaticUpdates": true,
                         "provisionVmAgent": true
