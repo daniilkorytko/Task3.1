@@ -22,9 +22,10 @@
         }
     },
     "variables": {
-        "vnetId1": "reference('linkedTemplateNSG').outputs.nsgId.value",
-        "subnetRef": "[concat(variables('vnetId1'), '/subnets/', parameters('subnetFrontEnd'))]"
-     
+        "nsgId": "('linkedTemplateVnet2').outputs.vnetId.value",
+        "vnetId": "('linkedTemplateNSG').outputs.nsgId.value]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetFrontEnd'))]"
+ 
     },
     "resources": [
         {
