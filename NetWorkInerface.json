@@ -11,7 +11,7 @@
         "networkInterfaceName": {
             "type": "string"
         },
-        "publicIpAddress": {
+        "publicIpAddressName": {
             "type": "string"
         },
         "nsgId": {
@@ -44,7 +44,7 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                                "id": "[parameters('publicIpAddressName')]"
                             }
                         }
                     }
