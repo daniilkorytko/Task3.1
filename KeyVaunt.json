@@ -45,10 +45,7 @@
             "metadata": {
                 "description": "The network firewall defined for this vault."
             }
-        },
-        "IdKey": {
-            "type": "string"
-        },
+        }
         "secretsObject": {
             "type": "secureObject",
             "defaultValue": "{}",
