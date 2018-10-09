@@ -12,7 +12,7 @@
             "type": "string"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "id"
         },
         "nsgId": {
             "type": "id"
