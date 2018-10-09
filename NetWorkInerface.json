@@ -2,16 +2,10 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "VnetName": {
-            "type": "string"
-        },
         "location": {
             "type": "string"
         },
         "subnetFrontEnd": {
-            "type": "string"
-        },
-        "networkSecurityGroupName": {
             "type": "string"
         },
         "networkInterfaceName": {
@@ -19,13 +13,19 @@
         },
         "publicIpAddressName": {
             "type": "string"
+        },
+        "nsgId": {
+            "type": "id"
+        },
+        "vnetId": {
+            "type": "id"
         }
     },
     "variables": {
-        "nsgId": "('linkedTemplateVnet2').outputs.vnetId.value",
-        "vnetId": "('linkedTemplateNSG').outputs.nsgId.value]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetFrontEnd'))]"
- 
+
+        "subnetRef": "[concat(parameters('vnetId'), '/subnets/', parameters('subnetFrontEnd'))]"
+      
+       
     },
     "resources": [
         {
@@ -33,6 +33,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-04-01",
             "location": "[parameters('location')]",
+
             "properties": {
                 "ipConfigurations": [
                     {
@@ -49,7 +50,7 @@
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[variables('nsgId')]"
+                    "id": "[parameters('nsgId')]"
                 }
             },
             "tags": {}
