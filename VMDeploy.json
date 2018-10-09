@@ -37,9 +37,6 @@
         },
         "adminPassword": {
             "type": "securestring"
-        },
-        "Idkey": {
-            "type": "string"
         }
     },
     "variables": {
