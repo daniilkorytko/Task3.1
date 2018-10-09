@@ -88,5 +88,11 @@
               "count": "[length(parameters('secretsObject').secrets)]"
             }
       }
-    ]
+    ],
+    "outputs": {
+        "KeyVaunts": {
+          "type": "string",
+          "value": "[resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults', parameters('KeyVautsName'))]"
+      }
+    }
 }
