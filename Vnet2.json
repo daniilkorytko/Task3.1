@@ -41,5 +41,11 @@
             },
             "tags": {}
         }
-    ]
+    ],
+    "outputs": {
+  "resourceID": {
+    "type": "string",
+    "value": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('VnetName'))]"
+  }
+}
 }
