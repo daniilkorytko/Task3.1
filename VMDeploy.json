@@ -34,9 +34,6 @@
         },
         "adminPassword": {
             "type": "securestring"
-        },
-        "adminPassword": {
-            "type": "securestring"
         }
     },
     "variables": {
