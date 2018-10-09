@@ -22,11 +22,9 @@
         }
     },
     "variables": {
-        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('VnetName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetFrontEnd'))]"
-      
-       
+        "vnetId1": "reference('linkedTemplateNSG').outputs.nsgId.value",
+        "subnetRef": "[concat(variables('vnetId1'), '/subnets/', parameters('subnetFrontEnd'))]"
+     
     },
     "resources": [
         {
@@ -36,8 +34,8 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[reference('linkedTemplateVnet2').outputs.vnetId.value]",
-                "[reference('linkedTemplateNSG').outputs.nsgId.value]", 
-                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
+                "[reference('linkedTemplateNSG').outputs.nsgId.value]"
+ 
             ],
             "properties": {
                 "ipConfigurations": [
