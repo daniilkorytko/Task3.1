@@ -11,7 +11,7 @@
         "networkInterfaceName": {
             "type": "string"
         },
-        "publicIpAddressName": {
+        "publicIpAddress": {
             "type": "string"
         },
         "nsgId": {
@@ -44,7 +44,7 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[parameters('publicIpAddressName')]"
+                                "id": "[parameters('publicIpAddress')]"
                             }
                         }
                     }
