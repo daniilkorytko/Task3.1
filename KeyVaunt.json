@@ -92,7 +92,7 @@
     "outputs": {
         "KeyVaunts": {
           "type": "string",
-          "value": "[resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults', parameters('KeyVautsName'))]"
+          "value": "[resourceId(subscription().id ,resourceGroup().name, 'Microsoft.KeyVault/vaults', parameters('KeyVautsName'))]"
       }
     }
 }
