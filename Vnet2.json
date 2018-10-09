@@ -15,10 +15,10 @@
             "type": "string"
         },
         "nsgId": {
-            "type": "string"
+            "type": "id"
         },
         "vnetId": {
-            "type": "string"
+            "type": "id"
         }
     },
     "variables": {
