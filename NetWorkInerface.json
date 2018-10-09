@@ -12,13 +12,13 @@
             "type": "string"
         },
         "publicIpAddressName": {
-            "type": "id"
+            "type": "string"
         },
         "nsgId": {
-            "type": "id"
+            "type": "string"
         },
         "vnetId": {
-            "type": "id"
+            "type": "string"
         }
     },
     "variables": {
