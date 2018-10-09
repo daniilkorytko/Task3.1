@@ -33,11 +33,6 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-04-01",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[reference('linkedTemplateVnet2').outputs.vnetId.value]",
-                "[reference('linkedTemplateNSG').outputs.nsgId.value]"
- 
-            ],
             "properties": {
                 "ipConfigurations": [
                     {
